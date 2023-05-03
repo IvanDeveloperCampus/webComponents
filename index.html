@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-<script src="app.js" type="module" defer></script>
+    <script src="app.js" type="module" defer></script>
+    <link rel="stylesheet" href="app.css">
 </head>
+
 <body>
-    <my-header></my-header>
-    <div class="container">
-        <div class="row">
-            <div class="col-8">
-                <my-section></my-section>
-            </div>
-            <div class="col-4">
-                <my-nav></my-nav>
-            </div>
+    <div class="container-fluid">
+        <my-header></my-header>
+    </div>
+    
+    <div class="container-fluid p">
+        <div>
+            <my-section></my-section>
+            <my-selection></my-selection>
         </div>
+        <my-nav></my-nav>
+    </div>
+
+    <div class="container-fluid">
+        <my-footer></my-footer>
     </div>
    
-    <my-footer></my-footer>
-    
+
 </body>
+
 </html>
