@@ -10,14 +10,23 @@ export default class mySection extends HTMLElement{
 
     constructor(){
         super()
-
         this.attachShadow({mode:"open"})
+    }
+    handleEvent(e){
+        (e.type==="click")?this.enviarWorker(e): undefined
+    }
 
+    enviarWorker(e){
+        console.log(e);
+    }
+
+    connectedCallback(){
         Promise.resolve(mySection.components()).then(html=>{
             this.shadowRoot.innerHTML=html
+            this.MyButton=this.shadowRoot.querySelector(".btnSection");
+            this.MyButton.addEventListener("click", this.handleEvent.bind(this))
         })
 
-        console.log("etiqueta section lista");
     }
 }
 

@@ -10,13 +10,23 @@ export default class myHeader extends HTMLElement{
     constructor(){
         super();
         this.attachShadow({mode:"open"});//reserva
+    }
 
-        //hace la promesa y el resultado  hace el inner
+    handleEvent(e){
+        (e.type==="click")?this.enviarWorker(e): undefined
+    }
+
+    enviarWorker(e){
+        console.log(e);
+    }
+
+    connectedCallback(){
         Promise.resolve(myHeader.components()).then(html=>{
             this.shadowRoot.innerHTML=html
+            this.MyButton=this.shadowRoot.querySelector(".btnHeader");
+            this.MyButton.addEventListener("click", this.handleEvent.bind(this))
         })
 
-        console.log("Etiqueta renderizada ");
     }
 }
 

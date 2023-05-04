@@ -10,14 +10,23 @@ export default class myFooter extends HTMLElement{
 
     constructor(){
         super()
-
         this.attachShadow({mode:"open"})
+    }
 
+    handleEvent(e){
+        (e.type==="click")?this.enviarWorker(e): undefined
+    }
+
+    enviarWorker(e){
+        console.log(e);
+    }
+
+    connectedCallback(){
         Promise.resolve(myFooter.components()).then(html=>{
             this.shadowRoot.innerHTML=html
+            this.MyButton=this.shadowRoot.querySelector(".btnFooter");
+            this.MyButton.addEventListener("click", this.handleEvent.bind(this))
         })
-
-        console.log("etiqueta footer lista");
     }
 }
 

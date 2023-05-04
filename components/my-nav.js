@@ -12,12 +12,22 @@ export default class myNav extends HTMLElement{
         super()
 
         this.attachShadow({mode:"open"})
+    }
 
+    handleEvent(e){
+        (e.type==="click")?this.enviarWorker(e): undefined
+    }
+
+    enviarWorker(e){
+        console.log(e);
+    }
+    
+    connectedCallback(){
         Promise.resolve(myNav.components()).then(html=>{
             this.shadowRoot.innerHTML=html
+            this.MyButton=this.shadowRoot.querySelector(".btnNav");
+            this.MyButton.addEventListener("click", this.handleEvent.bind(this))
         })
-
-        console.log("etiqueta nav lista");
     }
 }
 
